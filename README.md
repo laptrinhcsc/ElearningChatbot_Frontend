@@ -1,6 +1,6 @@
-# Book Chat with Gemini AI
+# ChatBot with Gemini AI
 
-Ứng dụng web cho phép người dùng thảo luận về sách với AI Gemini.
+Ứng dụng web cho phép người dùng chat với AI Gemini.
 
 ## Cài đặt
 
