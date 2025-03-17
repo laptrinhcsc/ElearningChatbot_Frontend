@@ -23,8 +23,3 @@ npm start
 ```
 GEMINI_API_KEY=your_api_key_here
 ```
-
-## Tính năng
-- Nhập thông tin về sách
-- Chat với AI về nội dung sách
-- Giao diện thân thiện với người dùng 
