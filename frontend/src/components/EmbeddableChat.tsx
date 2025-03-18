@@ -51,7 +51,7 @@ const theme = createTheme({
 
 const EmbeddableChat: React.FC<EmbeddableChatProps> = ({ 
   topic,
-  apiUrl = 'http://192.168.11.162:5000',
+  apiUrl = 'http://192.168.5.129:5001',
   height = '600px',
   width = '100%'
 }) => {
