@@ -152,9 +152,11 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
           display: 'flex', 
           flexDirection: 'column',
           overflow: 'hidden',
-          borderRadius: 1,
+          borderRadius: 0.1,
           bgcolor: 'background.paper',
-          cursor: !hasStarted ? 'pointer' : 'default'
+          cursor: !hasStarted ? 'pointer' : 'default',
+          border: '1px solid #ccc',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}
         onClick={startNewChat}
       >
@@ -238,10 +240,15 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
                   }}
                 >
                   {message.role === 'user' ? (
-                    <Typography variant="body2">{message.content}</Typography>
+                    <Box sx={{
+                      fontSize: '1rem',
+                    }}>
+                      <Typography variant="body1">{message.content}</Typography>
+                    </Box>
                   ) : (
                     <Box sx={{ 
                       '& .markdown': { 
+                        fontSize: '1rem',
                         '& pre': {
                           backgroundColor: 'rgba(0, 0, 0, 0.04)',
                           padding: 1,
@@ -300,6 +307,7 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Nhập câu hỏi của bạn..."
+                autoComplete="off"
                 disabled={isLoading}
                 sx={{ 
                   '& .MuiOutlinedInput-root': {
