@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, Button, Paper, Typography, ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import axios from 'axios';
-import subjectsData from '../data/subjects.json';
 
 // Tạo instance axios với cấu hình mặc định
 const api = axios.create({
@@ -61,16 +60,6 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
-  const [subjectName, setSubjectName] = useState<string>('');
-
-  // Thêm useEffect để lấy tên môn học từ file subjects.json
-  useEffect(() => {
-    if (topic && subjectsData[topic as keyof typeof subjectsData]) {
-      setSubjectName(subjectsData[topic as keyof typeof subjectsData].name);
-    } else {
-      setSubjectName(topic); // Sử dụng topic làm fallback nếu không tìm thấy trong json
-    }
-  }, [topic]);
 
   const startNewChat = async () => {
     if (!hasStarted) {
@@ -152,13 +141,9 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
           display: 'flex', 
           flexDirection: 'column',
           overflow: 'hidden',
-          borderRadius: 0.1,
+          borderRadius: 1,
           bgcolor: 'background.paper',
-          cursor: !hasStarted ? 'pointer' : 'default',
-          ...(hasStarted ? {} : {
-            border: '1px solid #ccc',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-          })
+          cursor: !hasStarted ? 'pointer' : 'default'
         }}
         onClick={startNewChat}
       >
@@ -172,7 +157,7 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
             textAlign: 'center'
           }}>
             <Typography variant="h6" color="text.secondary">
-              Click để bắt đầu trò chuyện về chủ đề: {subjectName}
+              Click để bắt đầu trò chuyện về chủ đề: {topic}
             </Typography>
           </Box>
         ) : (
@@ -182,7 +167,7 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
               sx={{ 
                 p: 2, 
                 borderRadius: 0,
-                background: '#0482d2',
+                background: 'linear-gradient(135deg, #00B4DB 0%, #0083B0 100%)',
                 color: 'white',
                 display: 'flex',
                 alignItems: 'center',
@@ -212,7 +197,7 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
                   zIndex: 2
                 }}
               >
-                Chatbot Hỗ trợ học tập {subjectName}
+                Chatbot Hỗ trợ học tập
               </Typography>
             </Paper>
 
@@ -242,15 +227,10 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
                   }}
                 >
                   {message.role === 'user' ? (
-                    <Box sx={{
-                      fontSize: '1rem',
-                    }}>
-                      <Typography variant="body1">{message.content}</Typography>
-                    </Box>
+                    <Typography variant="body2">{message.content}</Typography>
                   ) : (
                     <Box sx={{ 
                       '& .markdown': { 
-                        fontSize: '1rem',
                         '& pre': {
                           backgroundColor: 'rgba(0, 0, 0, 0.04)',
                           padding: 1,
@@ -309,7 +289,6 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Nhập câu hỏi của bạn..."
-                autoComplete="off"
                 disabled={isLoading}
                 sx={{ 
                   '& .MuiOutlinedInput-root': {
