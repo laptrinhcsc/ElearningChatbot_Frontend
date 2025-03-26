@@ -53,7 +53,7 @@ const theme = createTheme({
 const EmbeddableChat: React.FC<EmbeddableChatProps> = ({ 
   topic,
   apiUrl = 'https://elearning.csc.edu.vn:8443',
-  height = '600px',
+  height = '800px',
   width = '100%'
 }) => {
   const [sessionId, setSessionId] = useState<string | undefined>();
