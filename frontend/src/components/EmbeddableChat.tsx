@@ -155,8 +155,10 @@ const EmbeddableChat: React.FC<EmbeddableChatProps> = ({
           borderRadius: 0.1,
           bgcolor: 'background.paper',
           cursor: !hasStarted ? 'pointer' : 'default',
-          border: '1px solid #ccc',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+          ...(hasStarted ? {} : {
+            border: '1px solid #ccc',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+          })
         }}
         onClick={startNewChat}
       >
