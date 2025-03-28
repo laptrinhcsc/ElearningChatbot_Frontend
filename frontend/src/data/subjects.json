@@ -2,5 +2,25 @@
     "dl01": {
         "name": "Python cơ bản",
         "description": "Khóa học Python cơ bản"
-    }
+    },
+    "dl02": {
+        "name": "Xử lý và trực quan hóa dữ liệu với Python",
+        "description": "Xử lý và trực quan hóa dữ liệu với Python"
+    },
+    "dl03": {
+        "name": "Truy vấn và thu thập dữ liệu cho Khoa học dữ liệu",
+        "description": "Khóa học Truy vấn và thu thập dữ liệu cho Khoa học dữ liệu"
+    },
+    "dl04": {
+        "name": "Tiền xử lý dữ liệu và Phân tích dữ liệu",
+        "description": "Khóa học Tiền xử lý dữ liệu và Phân tích dữ liệu"
+    },
+    "dl05": {
+        "name": "Máy học với Python",
+        "description": "Khóa học Máy học với Python"
+    },
+    "dl06": {
+        "name": "Dữ liệu lớn trong máy học",
+        "description": "Khóa học Dữ liệu lớn trong máy học"
+    }   
 }
